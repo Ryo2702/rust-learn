@@ -18,7 +18,6 @@ fn main() {
 
     let mut input = String::new(); //become mutable
     io::stdin().read_line(&mut input).unwrap();
-
     // let input = input.trim(); //this is called shadowing
     let choice: u32 = input.trim().parse().unwrap();
 
