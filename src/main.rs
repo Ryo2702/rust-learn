@@ -1,4 +1,4 @@
-use std::{io, task};
+use std::{io};
 
 fn main() {
     let mut tasks: Vec<String> = Vec::new();
@@ -20,6 +20,7 @@ fn main() {
         println!("Choose an option:");
 
         let mut input = String::new(); //become mutable
+
         io::stdin().read_line(&mut input).unwrap();
         // let input = input.trim(); //this is called shadowing
         let choice: u32 = input.trim().parse().unwrap();
@@ -33,9 +34,7 @@ fn main() {
 
                 let mut task = String::new();
 
-                io::stdin()
-                    .read_line(&mut task)
-                    .unwrap();
+                io::stdin().read_line(&mut task).unwrap();
 
                 let task = task.trim().to_string();
 
@@ -43,10 +42,22 @@ fn main() {
 
                 println!("task added");
             }
+
             2 => {
                 println!();
-                println!("List Task selected");
+                println!("List Task: ");
+
+                if tasks.is_empty() {
+                    println!("No Task Yet");
+                } else {
+                    println!("Task:");
+
+                    for (index, task) in tasks.iter().enumerate() {
+                        println!("{}: {}", index, task);
+                    }
+                }
             }
+
             3 => {
                 println!();
                 println!("Complete Task selected");
